@@ -76,4 +76,8 @@ class NEHotspotManager {
             return ssid
         })
     }
+    
+    public static func getGatewayIP() -> String? {
+        return FGRoute.getGatewayIP()
+    }
 }

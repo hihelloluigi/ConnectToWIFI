@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var connectionStatusLabel: UILabel!
     
     // MARK: - Variables
-    private let ssid: String = ""
-    private let password: String = ""
+    private let ssid: String = "ABWIFI-Web&App"
+    private let password: String = "@Benergiewifi@"
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     private func connectToWifi() {
         NEHotspotManager.simpleConnectionToWifi(ssid: ssid, password: password, isWEP: false, completionHandler: NEHotspotCallback(onSuccess: { (_) in
             self.connectionStatusLabel.text = "Connected"
+            self.connectionStatusLabel.text = NEHotspotManager.getGatewayIP()
         }, onError: { (error) in
             switch error {
             case .usingSimulator:
